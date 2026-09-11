@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Tableau de bord{% endblock %}
+{% block content %}
+  <h1>Tableau de bord</h1>
+  <p>Bienvenue, {{ g.user.username }} ({{ g.user.role }}).</p>
+  <div class="cards">
+    <div class="card">
+      <h2>{{ nb_projets }}</h2>
+      <p><a href="{{ url_for('projects') }}">Projets</a></p>
+    </div>
+    <div class="card">
+      <h2>{{ nb_employes }}</h2>
+      <p>
+        {% if g.user.role == 'manager' %}
+          <a href="{{ url_for('employees') }}">Employes</a>
+        {% else %}
+          Employes
+        {% endif %}
+      </p>
+    </div>
+  </div>
+  {% if vuln_demo_enabled %}
+    <p class="vuln-warning">
+      ⚠ La demo vulnerable est activee (ENABLE_VULN_DEMO=1).
+      Voir <a href="{{ url_for('demo_vulnerable.index') }}">/demo-vulnerable</a> — usage local uniquement.
+    </p>
+  {% endif %}
+{% endblock %}

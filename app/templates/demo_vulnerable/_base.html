@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="vuln-banner">⚠ DEMO VULNERABLE — NE JAMAIS EXPOSER PUBLIQUEMENT ⚠</div>
+  <p class="hint"><a href="{{ url_for('demo_vulnerable.index') }}">&larr; Sommaire de la demo vulnerable</a></p>
+  {% block vuln_content %}{% endblock %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "demo_vulnerable/_base.html" %}
+{% block title %}Demo vulnerable — projet{% endblock %}
+{% block vuln_content %}
+  <h1>Projet {{ nom_proj }} — sans controle d'acces (VULNERABLE)</h1>
+  <p class="hint">Cette page n'exige aucune connexion ni role : ouvrez-la dans une fenetre privee pour constater que salaires et evaluations sont visibles sans authentification.</p>
+  {% if projet %}
+    <p>Manager : {{ projet.mgrNom }} — Budget : {{ "{:,}".format(projet.budget) }} — Debut : {{ projet.dateDebut }}</p>
+    <table>
+      <thead><tr><th>Employe</th><th>Heures/semaine</th><th>Salaire</th><th>Evaluation</th></tr></thead>
+      <tbody>
+        {% for a in assignments %}
+          <tr>
+            <td>{{ a.nomEmp }}</td>
+            <td>{{ a.heures }}</td>
+            <td>{{ "{:,}".format(a.salEmp) }}</td>
+            <td>{{ a.evalEmp if a.evalEmp is not none else "-" }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>Projet introuvable.</p>
+  {% endif %}
+{% endblock %}

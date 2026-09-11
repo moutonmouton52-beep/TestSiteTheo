@@ -1,0 +1,60 @@
+ * Tip: There are .env files present. Install python-dotenv to use them.
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Tip: There are .env files present. Install python-dotenv to use them.
+ * Debugger is active!
+ * Debugger PIN: 409-112-179
+127.0.0.1 - - [08/Sep/2026 16:50:28] "GET /demo-vulnerable/recherche?q=x'%20OR%20'1'='1'%20-- HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:50:28] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:50:29] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [08/Sep/2026 16:50:36] "GET /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:50:36] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:50:36] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [08/Sep/2026 16:50:54] "POST /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:50:54] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:50:54] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [08/Sep/2026 16:53:23] "GET / HTTP/1.1" 302 -
+127.0.0.1 - - [08/Sep/2026 16:53:23] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:53:23] "GET /static/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:53:23] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [08/Sep/2026 16:54:27] "POST /login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:54:27] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:56:25] "GET /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:56:25] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:56:36] "POST /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:56:36] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:57:11] "POST /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:57:11] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:57:16] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:57:16] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:57:22] "GET /demo-vulnerable/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:57:22] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:57:28] "GET /demo-vulnerable/recherche HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:57:28] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:57:49] "GET /demo-vulnerable/recherche?q=x'+OR+'1'%3D'1'+-- HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:57:49] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:00] "GET /demo-vulnerable/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:00] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:05] "GET /demo-vulnerable/mots-de-passe HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:05] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:13] "GET /demo-vulnerable/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:13] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:15] "GET /demo-vulnerable/projects/ILO HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:15] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:19] "GET /demo-vulnerable/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:20] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:29] "GET /projects/ILO HTTP/1.1" 302 -
+127.0.0.1 - - [08/Sep/2026 16:58:29] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:29] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:58:43] "GET /demo-vulnerable/mots-de-passe HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:58:43] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 16:59:02] "GET /demo-vulnerable/ HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 16:59:02] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 17:04:42] "GET /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 17:04:42] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 17:04:54] "POST /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 17:04:54] "GET /static/style.css HTTP/1.1" 304 -
+127.0.0.1 - - [08/Sep/2026 17:05:50] "POST /demo-vulnerable/login HTTP/1.1" 200 -
+127.0.0.1 - - [08/Sep/2026 17:05:50] "GET /static/style.css HTTP/1.1" 304 -

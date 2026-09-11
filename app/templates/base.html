@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}Gestionnaire de Projet{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="brand" href="{{ url_for('index') }}">Gestionnaire de Projet</a>
+      {% if g.user %}
+        <a href="{{ url_for('dashboard') }}">Tableau de bord</a>
+        <a href="{{ url_for('projects') }}">Projets</a>
+        {% if g.user.role == 'manager' %}
+          <a href="{{ url_for('employees') }}">Employes</a>
+        {% endif %}
+        <a href="{{ url_for('recherche') }}">Recherche</a>
+        {% if vuln_demo_enabled %}
+          <a class="vuln-link" href="{{ url_for('demo_vulnerable.index') }}">Demo vulnerable</a>
+        {% endif %}
+        <span class="user-info">{{ g.user.username }} ({{ g.user.role }})</span>
+        <a href="{{ url_for('logout') }}">Deconnexion</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Connexion</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}<li>{{ message }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

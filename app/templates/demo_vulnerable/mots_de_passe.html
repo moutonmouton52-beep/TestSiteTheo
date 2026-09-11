@@ -1,0 +1,46 @@
+{% extends "demo_vulnerable/_base.html" %}
+{% block title %}Demo — stockage des mots de passe{% endblock %}
+{% block vuln_content %}
+  <h1>Stockage des mots de passe</h1>
+  <p class="hint">
+    Voici ce que lit un attaquant qui recupere une copie de la base, selon la
+    facon dont les mots de passe y sont stockes. Memes comptes des deux cotes.
+  </p>
+
+  <div class="compare">
+    <div class="compare-col compare-bad">
+      <h2>En clair (a proscrire)</h2>
+      <table>
+        <thead><tr><th>Utilisateur</th><th>Mot de passe</th></tr></thead>
+        <tbody>
+          {% for u in en_clair %}
+            <tr><td>{{ u.username }}</td><td><code>{{ u.motDePasse }}</code></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p>Tous les comptes sont compromis immediatement — et avec eux les autres
+      services ou la personne a reutilise son mot de passe.</p>
+    </div>
+
+    <div class="compare-col compare-good">
+      <h2>Haches et sales (table <code>Utilisateur</code>)</h2>
+      <table>
+        <thead><tr><th>Utilisateur</th><th>Empreinte stockee</th></tr></thead>
+        <tbody>
+          {% for u in haches %}
+            <tr><td>{{ u.username }}</td><td><code>{{ u.motDePasseHash[:38] }}…</code></td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <p>L'empreinte ne permet pas de retrouver le mot de passe : il faut le
+      casser compte par compte. Le sel, different pour chacun, empeche de
+      s'attaquer a tous les comptes d'un coup.</p>
+    </div>
+  </div>
+
+  <p class="hint">
+    Cote application, la connexion (<a href="{{ url_for('login') }}">/login</a>)
+    ne compare jamais de mot de passe en clair : elle rejoue le hachage sur la
+    saisie et compare les empreintes.
+  </p>
+{% endblock %}

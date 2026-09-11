@@ -1,0 +1,26 @@
+{% extends "demo_vulnerable/_base.html" %}
+{% block title %}Demo vulnerable — recherche{% endblock %}
+{% block vuln_content %}
+  <h1>Injection SQL — recherche (VULNERABLE)</h1>
+  <p class="hint">La valeur saisie est concatenee directement dans la requete SQL. Essayer <code>x' OR '1'='1' -- </code> (avec l'espace final) pour lister tous les employes sans filtre reel.</p>
+  <form method="get" class="form-inline">
+    <input type="text" name="q" value="{{ q }}" placeholder="Nom de l'employe">
+    <button type="submit">Rechercher</button>
+  </form>
+  {% if sql %}
+    <p>Requete SQL executee :</p>
+    <pre class="sql-echo">{{ sql }}</pre>
+  {% endif %}
+  {% if error %}
+    <p class="error">Erreur SQL : {{ error }}</p>
+  {% endif %}
+  {% if q %}
+    <ul>
+      {% for r in results %}
+        <li>{{ r.idEmp }} — {{ r.nomEmp }}</li>
+      {% else %}
+        <li>Aucun resultat.</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

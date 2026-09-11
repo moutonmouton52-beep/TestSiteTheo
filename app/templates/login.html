@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Connexion{% endblock %}
+{% block content %}
+  <h1>Connexion</h1>
+  <form method="post" class="form">
+    <label>Utilisateur
+      <input type="text" name="username" required autofocus>
+    </label>
+    <label>Mot de passe
+      <input type="password" name="password" required>
+    </label>
+    <button type="submit">Se connecter</button>
+  </form>
+  <p class="hint">
+    Comptes de demo : <code>dupont / dupont123</code> (manager du projet ILO),
+    <code>holmes / holmes123</code> (manager du departement 10),
+    <code>durand / durand123</code>, <code>adam / adam123</code>, <code>rivera / rivera123</code>.
+    Le statut de manager n'est pas stocke sur le compte : il se deduit des projets
+    et departements diriges.
+  </p>
+{% endblock %}

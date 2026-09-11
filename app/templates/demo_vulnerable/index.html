@@ -1,0 +1,27 @@
+{% extends "demo_vulnerable/_base.html" %}
+{% block title %}Demo vulnerable{% endblock %}
+{% block vuln_content %}
+  <h1>Demo — comparaison pedagogique</h1>
+  <p>Plusieurs mauvaises pratiques, a comparer avec leur equivalent securise dans l'application. Usage local uniquement.</p>
+  <ul>
+    <li>
+      <a href="{{ url_for('demo_vulnerable.recherche') }}">Injection SQL — recherche</a>
+      vs <a href="{{ url_for('recherche') }}">version securisee</a>
+      (essayer <code>q=x' OR '1'='1' -- </code> avec l'espace final)
+    </li>
+    <li>
+      <a href="{{ url_for('demo_vulnerable.login') }}">Mot de passe en clair + injection SQL — login</a>
+      vs <a href="{{ url_for('login') }}">version securisee</a>
+      (essayer <code>username=admin' OR '1'='1' -- </code>)
+    </li>
+    <li>
+      <a href="{{ url_for('demo_vulnerable.mots_de_passe') }}">Stockage des mots de passe : en clair vs hache</a>
+      — ce que lit un attaquant en cas de fuite de la base
+    </li>
+    <li>
+      <a href="{{ url_for('demo_vulnerable.project_detail', nom_proj='ILO') }}">Absence de controle d'acces — projet ILO</a>
+      vs <a href="{{ url_for('project_detail', nom_proj='ILO') }}">version securisee</a>
+      (ouvrir le premier lien dans une fenetre privee, sans etre connecte)
+    </li>
+  </ul>
+{% endblock %}

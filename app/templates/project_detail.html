@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Projet {{ projet.nomProj }}{% endblock %}
+{% block content %}
+  <p><a href="{{ url_for('projects') }}">&larr; Projets</a></p>
+  <h1>{{ projet.nomProj }}</h1>
+  <p>Manager : {{ projet.mgrNom }} ({{ projet.mgrId }}) — Budget : {{ "{:,}".format(projet.budget) }} — Debut : {{ projet.dateDebut }}</p>
+
+  <h2>Employes affectes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Employe</th><th>Heures/semaine</th>
+        {% if can_see_all %}<th>Salaire</th>{% endif %}
+        <th>Evaluation</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in assignments %}
+        <tr>
+          <td>{{ a.nomEmp }}</td>
+          <td>{{ a.heures }}</td>
+          {% if can_see_all %}
+            <td>{{ "{:,}".format(a.salEmp) }}</td>
+          {% endif %}
+          <td>
+            {% if can_see_all or a.idEmp == current_id_emp %}
+              {{ a.evalEmp if a.evalEmp is not none else "-" }}
+            {% else %}
+              <span class="masked">masque</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if not can_see_all %}
+    <p class="hint">Le salaire des collegues et leurs evaluations sont masques : seul un manager, ou l'employe concerne pour sa propre evaluation, peut les voir.</p>
+  {% endif %}
+{% endblock %}

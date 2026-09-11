@@ -1,0 +1,22 @@
+{% extends "demo_vulnerable/_base.html" %}
+{% block title %}Demo vulnerable — login{% endblock %}
+{% block vuln_content %}
+  <h1>Login vulnerable (mot de passe en clair + injection SQL)</h1>
+  <p class="hint">Comptes de la demo : <code>dupont/dupont123</code>, <code>durand/durand123</code>… Essayer un contournement : utilisateur = <code>admin' OR '1'='1' -- </code> (avec l'espace final), mot de passe = n'importe quoi.</p>
+  <form method="post" class="form">
+    <label>Utilisateur
+      <input type="text" name="username" required autofocus>
+    </label>
+    <label>Mot de passe
+      <input type="text" name="password" required>
+    </label>
+    <button type="submit">Se connecter</button>
+  </form>
+  {% if sql %}
+    <p>Requete SQL executee :</p>
+    <pre class="sql-echo">{{ sql }}</pre>
+  {% endif %}
+  {% if result %}
+    <p><strong>{{ result }}</strong></p>
+  {% endif %}
+{% endblock %}

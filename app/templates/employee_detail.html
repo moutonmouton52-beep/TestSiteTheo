@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Employe {{ emp.idEmp }}{% endblock %}
+{% block content %}
+  {% if g.user.role == 'manager' %}<p><a href="{{ url_for('employees') }}">&larr; Employes</a></p>{% endif %}
+  <h1>{{ emp.nomEmp }} ({{ emp.idEmp }})</h1>
+  <p>Salaire : {{ "{:,}".format(emp.salEmp) }} — Departement : {{ emp.deptEmp }} (manager : {{ emp.mgrNom or "-" }})</p>
+
+  <h2>Affectations</h2>
+  <table>
+    <thead><tr><th>Projet</th><th>Heures/semaine</th><th>Evaluation</th></tr></thead>
+    <tbody>
+      {% for a in assignments %}
+        <tr>
+          <td>{{ a.nomProj }}</td>
+          <td>{{ a.heures }}</td>
+          <td>{{ a.evalEmp if a.evalEmp is not none else "-" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

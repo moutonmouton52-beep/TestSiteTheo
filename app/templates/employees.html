@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Employes{% endblock %}
+{% block content %}
+  <h1>Employes</h1>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Nom</th><th>Salaire</th><th>Departement</th><th>Manager dept.</th></tr>
+    </thead>
+    <tbody>
+      {% for e in employees %}
+        <tr>
+          <td><a href="{{ url_for('employee_detail', id_emp=e.idEmp) }}">{{ e.idEmp }}</a></td>
+          <td>{{ e.nomEmp }}</td>
+          <td>{{ "{:,}".format(e.salEmp) }}</td>
+          <td>{{ e.deptEmp }}</td>
+          <td>{{ e.mgrNom or "-" }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

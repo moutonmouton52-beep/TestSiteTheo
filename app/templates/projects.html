@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Projets{% endblock %}
+{% block content %}
+  <h1>Projets</h1>
+  <table>
+    <thead>
+      <tr><th>Nom</th><th>Manager</th><th>Budget</th><th>Date de debut</th></tr>
+    </thead>
+    <tbody>
+      {% for p in projects %}
+        <tr>
+          <td><a href="{{ url_for('project_detail', nom_proj=p.nomProj) }}">{{ p.nomProj }}</a></td>
+          <td>{{ p.mgrNom }} ({{ p.mgrId }})</td>
+          <td>{{ "{:,}".format(p.budget) }}</td>
+          <td>{{ p.dateDebut }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

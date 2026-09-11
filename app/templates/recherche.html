@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Recherche{% endblock %}
+{% block content %}
+  <h1>Recherche d'employe (securisee)</h1>
+  <form method="get" class="form-inline">
+    <input type="text" name="q" value="{{ q }}" placeholder="Nom de l'employe">
+    <button type="submit">Rechercher</button>
+  </form>
+  <p class="hint">Requete parametree : la valeur saisie est toujours traitee comme une donnee, jamais comme du SQL.</p>
+  {% if q %}
+    <ul>
+      {% for r in results %}
+        <li>{{ r.idEmp }} — {{ r.nomEmp }}</li>
+      {% else %}
+        <li>Aucun resultat.</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
